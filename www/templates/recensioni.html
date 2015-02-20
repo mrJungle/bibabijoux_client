@@ -1,0 +1,80 @@
+    <header>
+        <div class="container" style = "height:300px;">
+        </div>
+    </header>
+    <!-- About Section -->
+    <section>
+        <div class="container" style="padding-top:25px;">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Slurp, Gnam Gnam</h2>
+                    <h3 class="section-subheading text-muted">Sapori incontrati e posti da ricordare</h3>
+                </div>
+            </div>
+            <div class="row" infinite-scroll="updateProdotti()" infinite-scroll-distance="2" infinite-scroll-disabled="!metadata.next">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+
+	                        <li ng-repeat="recensione in recensioni" class="timeline{{recenzione.posizione}}">
+	                            <div class="timeline-image" >
+	                                <img class="img-circle img-responsive" ng-src="{{recensione.immagini[0].immagine_thumb}}" alt="">
+	                            </div>
+	                            <div class="timeline-panel">
+	                                <div class="timeline-heading">
+	                                    <h4>{{recensione.data}}</h4>
+	                                    <h4 class="subheading">{{recensione.titolo}}</h4>
+	                                </div>
+	                                <div class="timeline-body">
+	                                    <p class="text-muted">{{recensione.luogo}}</p>
+	                                    <p class="text-muted">{{recensione.recensione|limitTo: 200}} ...<a alt=""data-target="#{{recensione.id}}"  data-toggle="modal">Continua a leggere</a></p>	
+	                                    <p class="text-muted">{{recensione.prezzo}}</p>
+	                                    <p class="text-muted">{{recensione.voto}}</p>
+                                        
+	                                </div>
+	                            </div>
+	                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>The
+                                    <br>END
+                                    <br>:)</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <div infinite-scroll="updateProdotti()" infinite-scroll-distance="2" infinite-scroll-disabled="!metadata.next">
+                <div ng-repeat="recensione in recensioni">
+<div class="portfolio-modal modal fade" id="{{recensione.id}}" tabindex="-1" role="dialog" aria-hidden="true" style="z-index:1130;position:fixed;">
+                    <div class="modal-content">
+                        <div class="close-modal" data-dismiss="modal" style="z-index:1131;position:fixed;background-color:#fff;">
+                            <div class="lr">
+                                <div class="rl">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2">
+                                    <div class="modal-body">
+                                        <!-- Project Details Go Here -->
+                                        <h2>{{recensione.titolo}}</h2>
+                                        <p class="item-intro text-muted">€ {{ recensione.prezzo|number:2 }}</p>
+                                        <img class="img-responsive" ng-src="{{recensione.immagini[0].immagine}}" alt="">
+                                        <p>{{ recensione.recensione }}</p>
+                                        <ul class="list-inline">
+                                            <li>Prezzo: {{recensione.data}}</li>
+                                            <li>Numero persone: {{prodotto.voto}}</li>
+                                            <li>Voto: {{recensione.voto}}</li>
+                                        </ul>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Chiudi Anteprima</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            </div>
+        </div>

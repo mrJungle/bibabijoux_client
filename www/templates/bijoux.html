@@ -1,0 +1,80 @@
+<div class="panel " style="position:fixed;z-index-120">
+    <div class="panel-body">
+        <form novalidate>
+            <div class="form-group">
+                <label>Prezzo</label>
+                <slider range="true" min="0" max="1000" step="5" ng-model="rangeFilter" on-stop-slide="updatePriceRange()"></slider>
+
+            </div>
+            <div class="form-group">
+                <label >Titolo</label>
+                <input type="text" class="form-control" placeholder="titolo" ng-model="filters.title_contains">
+            </div>
+            <div class="form-group">
+                <label >Titolo</label>
+                <input type="text" class="form-control" placeholder="titolo" ng-model="filters.collezione_name">
+            </div>    
+<div ng-repeat="collezione in collezioni"> 
+                    <button class="btn btn-default" type="submit">{{collezione.nome}}</button>
+</div>
+        </form>
+    </div>
+</div>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Le Creazioni</h2>
+                    <h3 class="section-subheading text-muted">Tanta fantasia e un pizzico di magia</h3>
+                </div>
+            </div>
+            <div class="row" infinite-scroll="updateProdotti()" infinite-scroll-distance="2" infinite-scroll-disabled="!metadata.next" style="padding:0px 5% 0px 5%;">
+                <div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="prodotto in prodotti">
+                    <a data-target="#{{prodotto.id}}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img class="img-responsive" ng-src="{{prodotto.immagini[0].immagine_thumb}}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <div infinite-scroll="updateProdotti()" infinite-scroll-distance="2" infinite-scroll-disabled="!metadata.next">
+                <div ng-repeat="prodotto in prodotti">
+                                <div class="portfolio-modal modal fade" id="{{prodotto.id}}" tabindex="-1" role="dialog" aria-hidden="true" style="z-index:1130;position:fixed;">
+                    <div class="modal-content">
+                        <div class="close-modal" data-dismiss="modal" style="z-index:1131;position:fixed;background-color:#fff;">
+                            <div class="lr">
+                                <div class="rl">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2">
+                                    <div class="modal-body">
+                                        <!-- Project Details Go Here -->
+                                        <h2>{{prodotto.titolo}}</h2>
+                                        <p class="item-intro text-muted">€ {{ prodotto.price|number:2 }}</p>
+                                        <img class="img-responsive" ng-src="{{prodotto.immagini[0].immagine}}" alt="">
+                                        <p>{{ prodotto.descrizione }}</p>
+                                        <ul class="list-inline">
+                                            <li>Data: {{prodotto.collezione_data}}</li>
+                                            <li>Collezione: {{prodotto.collezione_nome}}</li>
+                                            <li>Categoria: {{prodotto.categoria_tipologia}}</li>
+                                        </ul>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Chiudi Anteprima</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
