@@ -184,6 +184,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default .navbar-collapse {
     border-color: rgba(255,255,255,1);
+    
 }
 
 .navbar-default .navbar-toggle {
@@ -226,8 +227,25 @@ fieldset[disabled] .btn-xl.active {
     background-color: #fec503;
 }
 
+@media(min-width:10px) {
+    .navbar-default {
+        background-color: rgba(0,0,0,0.9);       
+        color: #fff;
+        padding: 5px 0;
+    }
+.navbar-default .nav li a {
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #fff;
+}
+}
+
+
 @media(min-width:768px) {
     .navbar-default {
+        background-color:rgba(0,0,0,0);   
         padding: 25px 0;
         border: 0;
          -webkit-transition: padding .3s;
@@ -248,11 +266,12 @@ fieldset[disabled] .btn-xl.active {
 
     .navbar-default.navbar-shrink {
         padding: 10px 0;
-        background-color: #fff;
+        background-color:rgba(0,0,0,0.9);   
     }
 
     .navbar-default.navbar-shrink .navbar-brand {
         font-size: 1.5em;
+        
     }
 }
 
@@ -860,4 +879,47 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: #fed136;
+}
+
+
+#filtri {
+    position:fixed;
+    top:150px;
+    left:3%;
+    right:3%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.9);
+
+}
+
+#bottone_totop {
+    width:50px; 
+    height:40px;
+    background-color:rgba(0, 0, 0, .3);z-index:2000;
+    padding:0px; 
+    font-size:2.0em;
+    text-align:center; 
+    font-weight: bold;
+    color: whiteSmoke;
+    text-decoration: none;
+    position:fixed;
+    top:90%;
+    right:2%;
+    display:none;
+}
+
+#bottone_filtri {
+    width:50px; 
+    height:40px;
+    background-color:rgba(255, 128, 0, .8);
+    z-index:1000;
+    padding:0px; 
+    font-size:2.0em;
+    text-align:center; 
+    font-weight: bold;
+    color: whiteSmoke;
+    text-decoration: none;
+    position:fixed;
+    top:90%;
+    left:2%;
 }

@@ -30,11 +30,12 @@ var cbpAnimatedHeader = (function() {
 	//		classie.add( header, 'navbar-shrink' );
 	//		$('.navbar').removeClass('navbar-shrink');
 	        $('.navbar').addClass('navbar-shrink');
+//	        $('#bs-example-navbar-collapse-1').addClass('navbar-shrink');
 		}
 		else {
 //			classie.remove( header, 'navbar-shrink' );
 			$('.navbar').removeClass('navbar-shrink');
-//        $('.navbar').addClass('navbar-shrink');
+//			$('#bs-example-navbar-collapse-1').removeClass('navbar-shrink');
 		}
 		didScroll = false;
 	}

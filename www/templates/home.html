@@ -3,22 +3,13 @@
             <div class="intro-text">
                 <div class="intro-lead-in">Storie, racconti, recensioni</div>
                 <div class="intro-heading"> e fantasia, a badilate !</div>
-                <a  href="#portfolio" du-smooth-scroll duration="1500"  class="btn btn-xl">Collezioni</a>
+                <a  href="#services" du-smooth-scroll duration="1500"  class="btn btn-xl">Collezioni</a>
             </div>
         </div>
     </header>
-<a href="#pippo" du-smooth-scroll duration="500" class="scrollToTop_d" style="width:50px; height:40px;
-background-color:rgba(0, 0, 0, .3);z-index:2000;
-    padding:0px; 
-    font-size:2.0em;
-    text-align:center; 
-    font-weight: bold;
-    color: whiteSmoke;
-    text-decoration: none;
-    position:fixed;
-    top:90%;
-    right:2%;
-    display:none;" ><i class="fa fa-arrow-up fa-stack-1x fa-inverse"></i></a>
+<a href="#pippo" du-smooth-scroll duration="500" id="bottone_totop" class="scrollToTop_d" >
+    <i class="fa fa-arrow-up fa-stack-1x fa-inverse"></i>
+</a>
     <!-- Services Section -->
     <section id="services">
         <div class="container">
@@ -32,7 +23,7 @@ background-color:rgba(0, 0, 0, .3);z-index:2000;
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-female fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">io</h4>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
@@ -40,15 +31,15 @@ background-color:rgba(0, 0, 0, .3);z-index:2000;
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-magic fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Bijoux</h4>
-                    <p class="text-muted">Le mie creazioni suddivise in collezioni tematiche.</p>
+                    <p class="text-muted">Le mie creazioni suddivise in <a  href="#portfolio" du-smooth-scroll duration="1500">Collezioni</a> tematiche.</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-coffie fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Recensioni</h4>
                     <p class="text-muted">Assaggi e scorpacciate !!  Da leccarsi i baffi o cagare a spruzzo ?</p>
@@ -69,8 +60,8 @@ background-color:rgba(0, 0, 0, .3);z-index:2000;
             <div class="row">
 
                 <div class="col-md-4 col-sm-6 portfolio-item"  ng-repeat="collezione in collezioni">
-                    <a href="#portfolioModal1" class="portfolio-link">
-                        <div class="portfolio-hover"  ui-sref="bijoux">
+                    <a class="portfolio-link" ng-click="select_collection(collezione.id)">
+                        <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>

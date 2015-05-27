@@ -1,35 +1,25 @@
-<div class="panel " style="position:fixed;z-index-120">
-    <div class="panel-body">
-        <form novalidate>
-            <div class="form-group">
-                <label>Prezzo</label>
-                <slider range="true" min="0" max="1000" step="5" ng-model="rangeFilter" on-stop-slide="updatePriceRange()"></slider>
-
-            </div>
-            <div class="form-group">
-                <label >Titolo</label>
-                <input type="text" class="form-control" placeholder="titolo" ng-model="filters.title_contains">
-            </div>
-            <div class="form-group">
-                <label >Titolo</label>
-                <input type="text" class="form-control" placeholder="titolo" ng-model="filters.collezione_name">
-            </div>    
-<div ng-repeat="collezione in collezioni"> 
-                    <button class="btn btn-default" type="submit">{{collezione.nome}}</button>
-</div>
-        </form>
-    </div>
-</div>
-
-    <!-- Portfolio Grid Section -->
-    <section id="portfolio">
-        <div class="container">
+    <header>
+        <div class="container" style = "height:300px;padding-top:120px;padding-bottom:20px;">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Le Creazioni</h2>
+                    <h2  style='font-family: Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 32px;
+    font-style: italic;
+    line-height: 32px;'>Le Creazioni</h2>
                     <h3 class="section-subheading text-muted">Tanta fantasia e un pizzico di magia</h3>
                 </div>
             </div>
+        </div>
+    </header>
+    <a id="bottone_filtri" data-target="#pannello_filtri" class="portfolio-link" data-toggle="modal" >
+        <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+    </a>
+    <a href="#pippo" du-smooth-scroll duration="500" id="bottone_totop" class="scrollToTop_d" >
+    <i class="fa fa-arrow-up fa-stack-1x fa-inverse"></i>
+</a>
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio" style="margin-top:0px;padding-top:30px;">
+        <div class="container">
             <div class="row" infinite-scroll="updateProdotti()" infinite-scroll-distance="2" infinite-scroll-disabled="!metadata.next" style="padding:0px 5% 0px 5%;">
                 <div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="prodotto in prodotti">
                     <a data-target="#{{prodotto.id}}" class="portfolio-link" data-toggle="modal">
@@ -78,3 +68,45 @@
                 </div>
             </div>
         </div>
+
+            <div class="portfolio-modal modal fade" id="pannello_filtri" tabindex="-1" role="dialog" aria-hidden="true" style="z-index:1130;position:fixed;background-color:rgba(255, 255, 255, 0.9);">
+                    <div class="modal-content" style="background-color:rgba(255, 255, 255, 0);">
+                        <div class="close-modal" data-dismiss="modal" style="z-index:1131;position:fixed;background-color:#fff;">
+                            <div class="lr">
+                                <div class="rl">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2">
+                                    <div class="modal-body">
+                                        <!-- Project Details Go Here -->
+                                        <h2>filtri</h2>
+                                        <div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default btn-xl" ng-repeat="collezione in collezioni" ng-click="filtra_collezione(collezione.id)">{{collezione.nome}}</button>
+</div>
+                                        <div >
+                                            <div ng-if="filters.collezione_name == collezione.name">
+                                     <button  type="button" class="btn btn-primary collezioni_sel" ng-click="deseleziona(collezione.name)"><i class="fa fa-times"></i> {{collezione.nome}}</button>
+       </div>
+                                                   <div ng-if="filters.collezione_name != collezione.name" ng-click="seleziona(collezione.name)">
+                                     <button  type="button" class="btn btn-default"><i class="fa fa-times"></i> {{collezione.nome}}</button>
+       </div>
+       </div>
+             
+                                        
+                                        <p class="item-intro text-muted">€ filtri</p>
+                                        <p>filtri</p>
+                                        <ul class="list-inline">
+                                            <li>Data: filtri</li>
+                                            <li>Collezione: filetir</li>
+                                            <li>Categoria: imnsjkanj</li>
+                                        </ul>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Chiudi Anteprima</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                    

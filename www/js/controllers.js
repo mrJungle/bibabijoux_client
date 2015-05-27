@@ -9,7 +9,7 @@ angular.module("AirBibi")
     $scope.globalMethod_cambiavar = function(a){
         $scope.galleriaselezionata = a;
     };
-    $scope.collezioni = [];
+    $scope.collezioni = '';
     $scope.collezioniFromServer = function(){
         Restangular.all('collezioni').getList()
         .then(function(data){
@@ -20,7 +20,7 @@ angular.module("AirBibi")
 })
 
 
-.controller('HomeCtrl',  function ($scope, $document) {
+.controller('HomeCtrl',  function ($scope, $document, $state) {
     $('html, body').animate({scrollTop : 0},800);
     $('.navbar').removeClass('navbar-shrink');
     console.log($scope.collezioni);
@@ -33,8 +33,14 @@ angular.module("AirBibi")
             $('.scrollToTop_d').fadeOut();
         }
     });
-    $scope.scrolla = function() {
-        scrollTo(0, $( '#portfolio').offset().top   ,[0.1, [0.20000]]);
+//    $scope.scrolla = function() {
+//        scrollTo(0, $( '#services').offset().top   ,[0.1, [0.20000]]);
+//    };
+    $scope.select_collection = function(a) {
+        console.log(a);
+        $scope.globalMethod_cambiavar(a)
+        $state.go('bijoux');
+//        scrollTo(0, $( '#portfolio').offset().top   ,[0.1, [0.20000]]);
     };
 })
 
@@ -50,8 +56,14 @@ angular.module("AirBibi")
         title_contains:null,
         collezione_name:null
     };
+    if ($scope.galleriaselezionata != '' ) {$scope.filters.collezione_name=$scope.galleriaselezionata;}
+    console.log($scope.filters);
     var updating = false;
     $scope.rangeFilter = [0, 100]
+    $scope.deseleziona = function(a) {
+        $('.btn .btn-primary .collezioni_sel').addClass('btn-default').removeClass('btn-primary');
+
+    };
 
     var updateFromServer = function(page){
         updating = true;
@@ -70,7 +82,8 @@ angular.module("AirBibi")
             updating = false;
         });
     };
-        $scope.updateProdotti = function(){
+
+    $scope.updateProdotti = function(){
         if(updating){return;}
         if($scope.metadata && $scope.metadata.next){
             updateFromServer($scope.metadata.number + 1);
@@ -97,6 +110,11 @@ angular.module("AirBibi")
         $scope.search();
 
     }, true)
+
+    $scope.filtra_collezione = function(a) {
+        $('.btn .btn-default .collezioni_sel').addClass('btn-primary').removeClass('btn-default');
+        $scope.filters.collezione_name = a;
+    }
 
     updateFromServer(1);
 })
