@@ -3,7 +3,7 @@ angular.module("AirBibi", ['ui.router', 'restangular', 'infinite-scroll', 'ui.bo
 
 .config(function($stateProvider, $urlRouterProvider, RestangularProvider){
 
-    var baseServerUrl = '/rest/';
+    var baseServerUrl = 'http://bibabijouxs-server.trecode.webfactional.com/rest/';
     RestangularProvider.setBaseUrl(baseServerUrl);
 
     RestangularProvider.setResponseExtractor(function(response, operation, what, url) {
